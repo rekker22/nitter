@@ -20,7 +20,7 @@ RUN apk --no-cache add pcre ca-certificates redis
 
 # Copy Nitter binary & resources
 COPY --from=build /src/nitter/nitter ./nitter
-#COPY --from=build /src/nitter/nitter.conf ./nitter.conf
+COPY --from=build /src/nitter/nitter.conf ./nitter.conf
 COPY --from=build /src/nitter/sessions.jsonl ./sessions.jsonl
 COPY --from=build /src/nitter/public ./public
 
