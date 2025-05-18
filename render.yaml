@@ -4,7 +4,8 @@ services:
     env: image
     repo: https://github.com/rekker22/nitter/
     branch: render-yaml
-    image: zedeus/nitter:latest
+    image:
+        url: docker.io/zedeus/nitter:latest
     plan: free
     disk:
       name: config-files
