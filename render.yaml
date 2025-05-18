@@ -10,11 +10,4 @@ services:
       - key: NITTER_CONFIG
         value: /src/nitter.conf
       - key: REDIS_HOST
-        value: nitter-redis:6379
-
-  - type: pserv
-    name: nitter-redis
-    env: image
-    image:
-        url: docker.io/library/redis:6-alpine
-    plan: free
+        value: 127.0.0.1:6379
