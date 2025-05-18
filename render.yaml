@@ -22,7 +22,8 @@ services:
   - type: pserv
     name: nitter-redis
     env: image
-    image: redis:6-alpine
+    image:
+        url: docker.io/library/redis:6-alpine
     plan: free
     disk:
       name: redis-data
