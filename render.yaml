@@ -1,15 +1,11 @@
 services:
   - type: web
     name: nitter
-    env: docker
+    env: image
     repo: https://github.com/rekker22/nitter/
     branch: render-yaml
-    dockerfilePath: ""
     image: zedeus/nitter:latest
     plan: free
-    envVars:
-      - key: NITTER_CONFIG
-        value: /src/nitter.conf
     disk:
       name: config-files
       mountPath: /src
@@ -17,12 +13,14 @@ services:
     autoDeploy: false
     healthCheckPath: /Jack/status/20
     envVars:
+      - key: NITTER_CONFIG
+        value: /src/nitter.conf
       - key: REDIS_HOST
         value: nitter-redis:6379
 
   - type: pserv
     name: nitter-redis
-    env: docker
+    env: image
     image: redis:6-alpine
     plan: free
     disk:
