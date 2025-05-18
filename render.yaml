@@ -3,7 +3,6 @@ services:
     name: nitter
     env: docker
     repo: https://github.com/rekker22/nitter/
-    branch: render-yaml
     plan: free
     autoDeploy: false
     healthCheckPath: /Jack/status/20
