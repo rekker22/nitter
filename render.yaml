@@ -2,7 +2,7 @@ services:
   - type: web
     name: nitter
     env: docker
-    repo: https://github.com/rekker22/nitter/
+    repo: https://github.com/rekker22/nitter
     plan: free
     autoDeploy: false
     healthCheckPath: /Jack/status/20
