@@ -17,9 +17,9 @@ FROM alpine:latest
 WORKDIR /src/
 RUN apk --no-cache add pcre ca-certificates
 COPY --from=nim /src/nitter/nitter ./
-COPY --from=nim /src/nitter/nitter.example.conf ./nitter.conf
-#COPY /src/nitter/nitter.conf ./nitter.conf
-#COPY /src/nitter/sessions.jsonl ./sessions.jsonl
+#COPY --from=nim /src/nitter/nitter.example.conf ./nitter.conf
+COPY --from=nim /src/nitter/nitter.conf ./nitter.conf
+COPY --from=nim /src/nitter/sessions.jsonl ./sessions.jsonl
 
 COPY --from=nim /src/nitter/public ./public
 EXPOSE 8080
