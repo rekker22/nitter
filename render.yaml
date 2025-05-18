@@ -2,23 +2,29 @@ services:
   - type: web
     name: nitter
     env: docker
-    dockerfilePath: ./Dockerfile # optional if you're using a prebuilt image
-    plan: starter
-    autoDeploy: false
+    repo: https://github.com/rekker22/nitter/
+    branch: render-yaml
+    dockerfilePath: ""
+    image: zedeus/nitter:latest
+    plan: free
     envVars:
-      - key: NITTER_REDIS_HOST
-        value: nitter-redis:6379
+      - key: NITTER_CONFIG
+        value: /src/nitter.conf
     disk:
-      name: sessions-volume
+      name: config-files
       mountPath: /src
       sizeGB: 1
+    autoDeploy: false
     healthCheckPath: /Jack/status/20
+    envVars:
+      - key: REDIS_HOST
+        value: nitter-redis:6379
 
-  - type: private-service
+  - type: pserv
     name: nitter-redis
     env: docker
-    dockerfilePath: ./redis.Dockerfile # or use image directly if not custom
-    plan: starter
+    image: redis:6-alpine
+    plan: free
     disk:
       name: redis-data
       mountPath: /data
