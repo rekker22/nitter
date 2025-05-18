@@ -1,11 +1,9 @@
 services:
   - type: web
     name: nitter
-    env: image
+    env: docker
     repo: https://github.com/rekker22/nitter/
     branch: render-yaml
-    image:
-        url: docker.io/zedeus/nitter:latest
     plan: free
     disk:
       name: config-files
