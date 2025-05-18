@@ -9,7 +9,5 @@ nitter
 /tools/rendermd
 /public/css/style.css
 /public/md/*.html
-nitter.conf
 guest_accounts.json*
-sessions.json*
 dump.rdb
