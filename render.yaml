@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: nitter
+    env: docker
+    dockerfilePath: ./Dockerfile # optional if you're using a prebuilt image
+    plan: starter
+    autoDeploy: false
+    envVars:
+      - key: NITTER_REDIS_HOST
+        value: nitter-redis:6379
+    disk:
+      name: sessions-volume
+      mountPath: /src
+      sizeGB: 1
+    healthCheckPath: /Jack/status/20
+
+  - type: private-service
+    name: nitter-redis
+    env: docker
+    dockerfilePath: ./redis.Dockerfile # or use image directly if not custom
+    plan: starter
+    disk:
+      name: redis-data
+      mountPath: /data
+      sizeGB: 1
