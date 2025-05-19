@@ -31,6 +31,8 @@ RUN --mount=type=secret,id=nitter_conf,dst=/etc/secrets/nitter.conf \
 
 RUN ls -l /src/ && cat /src/nitter.conf
 
+RUN chown nitter:nitter /src/nitter.conf /src/sessions.jsonl
+
 EXPOSE 8080
 
 # Create non-root user
