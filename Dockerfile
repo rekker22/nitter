@@ -29,6 +29,8 @@ RUN --mount=type=secret,id=nitter_conf,dst=/etc/secrets/nitter.conf \
     cp /etc/secrets/nitter.conf ./nitter.conf && \
     cp /etc/secrets/sessions.jsonl ./sessions.jsonl
 
+RUN ls -l /src/ && cat /src/nitter.conf
+
 EXPOSE 8080
 
 # Create non-root user
