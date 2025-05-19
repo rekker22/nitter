@@ -31,12 +31,13 @@ RUN --mount=type=secret,id=nitter_conf,dst=/etc/secrets/nitter.conf \
 
 RUN ls -l /src/ && cat /src/nitter.conf
 
-RUN chown nitter:nitter /src/nitter.conf /src/sessions.jsonl
-
 EXPOSE 8080
 
 # Create non-root user
 RUN adduser -h /src/ -D -s /bin/sh nitter
+
+RUN chown nitter:nitter /src/nitter.conf /src/sessions.jsonl
+
 USER nitter
 
 CMD redis-server --daemonize yes && ./nitter
